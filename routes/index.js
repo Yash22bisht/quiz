@@ -1,12 +1,15 @@
 var express = require('express');
+require('dotenv').config()
 var router = express.Router();
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const {User}  = require('../models/user.js')
-
+const db = process.env.MONGODB_URL
 const condb = async ()=>{
-  const conn =  await mongoose.connect('mongodb://localhost:27017/Quiz_users')
-  console.log("connected to mongodb ");
+  const conn =  await mongoose.connect(db).then(() => { 
+    console.log("connected to mongodb ");
+   }
+  )
 }
 condb();
 router.use(bodyParser.urlencoded({ extended: true }));

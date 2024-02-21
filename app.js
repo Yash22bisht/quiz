@@ -38,9 +38,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-// app.listen(3000)
+app.listen(3000)
 
-app.use(`/.netlify/functions/api`, router);
+// app.use(`/.netlify/functions/api`, router);
 
 module.exports.handler = serverless(app);
 module.exports = app;
